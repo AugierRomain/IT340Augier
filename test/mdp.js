@@ -1,24 +1,23 @@
-function mdpValidate(mdp) {
-    if (mdpLengthSuperior8(mdp)){
+function mdpValidate(mdp,edge) {
+    if (mdpLengthSuperior(mdp,edge)){
+        console.log("edge")
         if (mdpChiffreBool(mdp)){
             if (mdpLettreBool(mdp)){
                 if(mdpSpecialBool(mdp)){
+                    console.log('mdp valid')
                     return true
                 }
-            }
-            
+            }           
         }     
     }
    return false
 }
 
-function mdpLengthSuperior8 (mdp) {
-    if (mdp.length > 8) {
+function mdpLengthSuperior (mdp,edge) {
+    if (mdp.length > edge) {
         return true
     }
-    else {
         return false
-    }
 }
 function mdpLettreBool (mdp) {
     let reg = /[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]/
@@ -51,6 +50,7 @@ function mdpSpecialBool (mdp) {
 }
 module.exports = mdpValidate;
 const mdp = "JeSuisGentil"
-console.log(mdpLengthSuperior8(mdp))
+mdpValidate(mdp,8)
+/*console.log(mdpLengthSuperior(mdp))
 console.log(mdpChiffreBool(mdp))
-mdpLettreBool(mdp)
+mdpLettreBool(mdp)*/
